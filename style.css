@@ -36,10 +36,10 @@ form.example input[type=text] {
     max-width: 100%;
     margin: 0;
   }
-  .jumbotron{
-    margin-right: 0%;
-    padding-right: 0%;
-    background-color: white;
-    margin-bottom: 0;
 
+  .card-body{
+    background-color: rgb(0, 123, 255);
+  }
+  #firstcard{
+    padding: 2%;
   }
