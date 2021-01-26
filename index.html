@@ -4,7 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Weather Map</title>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script> -->
+    <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
      <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="style.css">
@@ -20,7 +21,7 @@
           <div class="example" style="margin:auto;max-width:300px">
             <label for="Search">Search for City:</label><br>
             <input type="text" placeholder="Search" name="search2" id="city">
-            <button type="submit"><i class="fa fa-search"></i></button>
+            <button type="submit" class="example"><i class="fa fa-search"></i></button>
           </div>
           <br>
           <div class="card" style="width: 18rem;">
@@ -42,11 +43,11 @@
         <div class="col-md-9">
 
             <div class="card" id="firstcard">
-                <h5 class="card-title" id="locationData">Atlanta <span class="date"> (1/25/21)</span><img src="" alt="" srcset=""></h5>
-                <p class="card-text">Temperature: <span>90.9</span><span>&#8457;</span> </p>
-                <p class="card-text">Humidity: <span>41</span>%</p>
-                <p class="card-text">Wind Speed: <span>4.7</span>MPH</p>
-                <p class="card-text"> UV Index: <span>90.9</span></p>
+                <h5 class="card-title" id="locationName">Atlanta </h5> <span class="date" id="todaysDate"> (1/25/21)</span> <img id="weatherimg" src="" alt="" srcset="">                  
+                <p class="card-text">Temperature: <span id="temperature">90.9</span><span>&#8457;</span> </p>
+                <p class="card-text">Humidity: <span id="Humidity">41</span>%</p>
+                <p class="card-text">Wind Speed: <span id="speed">4.7</span>MPH</p>
+                <p class="card-text"> UV Index: <span id="UVindex" >90.9</span></p>
               </div>
         
           <main>
@@ -57,41 +58,41 @@
   
               <div class="card-body">
                 <h6 class="card-title" id="date-1">8/16/2021</h6>
-                <img class="card-img-top" src=" " alt="Card image cap">
-                <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                <img class="card-img-top" src=" " alt="Weather image" width="30%" height="30%">
+                <p class="card-text">Temp: <span id="temperature">86.84</span> <span>&#8457;</span> </p>
+                <p class="card-text">Humidity: <span class="white" id="Humidity">43</span>%</p>
               </div>
             </div>
             <div class="card">
               <div class="card-body">
                 <h6 class="card-title" id="date-2" >8/16/2021</h6>
-                <img class="card-img-top" src=" " alt="Card image cap">
-                <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                <img class="card-img-top" src=" " alt="Weather image" width="30%" height="30%">
+                <p class="card-text">Temp: <span id="temperature">86.84</span> <span>&#8457;</span> </p>
+                <p class="card-text">Humidity: <span class="white" id="Humidity">33</span>%</p>
               </div>
             </div>
             <div class="card">
               <div class="card-body">
                 <h6 class="card-title" id="date-3" >8/16/2021</h6>
-                <img class="card-img-top" src=" " alt="Card image cap">
-                <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                <img class="card-img-top" src=" " alt="Weather image" width="30%" height="30%">
+                <p class="card-text">Temp: <span id="temperature">86.84</span> <span>&#8457;</span> </p>
+                <p class="card-text">Humidity: <span class="white" id="Humidity">37</span>%</p>
               </div>
             </div>
             <div class="card">
               <div class="card-body">
                 <h6 class="card-title" id="date-4">8/16/2021</h6>
-                <img class="card-img-top" src=" " alt="Card image cap">
-                <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                <img class="card-img-top" src=" " alt="Weather image" width="30%" height="30%">
+                <p class="card-text">Temp: <span id="temperature">86.84</span> <span>&#8457;</span> </p>
+                <p class="card-text">Humidity: <span class="white" id="Humidity">57</span>%</p>
               </div>
             </div>
             <div class="card">
               <div class="card-body">
                 <h6 class="card-title" id="date-5">8/16/2021</h6>
-                <img class="card-img-top" src=" " alt="Card image cap">
-                <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                <img class="card-img-top" src=" " alt="Weather image" width="30%" height="30%">
+                <p class="card-text">Temp: <span id="temperature">86.84</span> <span>&#8457;</span> </p>
+                <p class="card-text">Humidity:<span class="white" id="Humidity">51</span>%</p>
               </div>
             </div>
           </div>
@@ -101,121 +102,49 @@
     
        
     
-    <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script> -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
+    <script src="script.js"></script>
     <script>
-      // This is our API key. Add your own API key between the ""
-      var APIKey = "886712791a5989b3234e47cdd0cb5a55";
-      var city = $("#city");
-      // var saveCities = (ev) => { 
-        var storageOfCities = [
-                {
-                  cityone: ""
-                },
-                {
-                  cityone: $("#city").val().trim()
-                },
-                {   
-                  cityone: $("#city").val().trim()
-                },
-                {
-                  cityone: $("#city").val().trim()
-                },
-                {
-                  cityone: $("#city").val().trim()
-                },
-      ];
+//       // This is our API key. Add your own API key between the ""
+//       var APIKey = "886712791a5989b3234e47cdd0cb5a55";
+//       var city = $("#city");
+//       var currentCityweather = [];
 
-      var emptyCities = [];
+// //       $(document).ready(() => {
+// $('button').on("click", function(event) {
+// event.preventDefault();
+// //get the info from the input and put it into an empty string
+//  var cityone = city.val();
+// showCurrent(cityone);
+// setCity();
+// })
 
-      console.log("ADDED:" + storageOfCities);
-      console.log("added" + JSON.stringify(storageOfCities));
+// function showCurrent(currentWeather) {
 
-      // localStorage.setItem(scheduleStorageKeyName, JSON.stringify(schedules));
-      //       console.log(scheduleStorageKeyName);
-// };
+//   currentCityweather.push(currentWeather);
 
-//       $(document).ready(() => {
-$('button').on("click", function(event) {
-event.preventDefault();
-//get the info from the input and put it into an empty string
- var cityone = city.val();
-showCurrent(cityone);
-setCity();
-})
-var currentCityweather = [];
-function showCurrent(currentWeather) {
+//         localStorage.setItem("weather", JSON.stringify( currentCityweather ) );
 
-  currentCityweather.push(currentWeather);
+//         document.getElementById("city").innerHTML = JSON.parse( localStorage.getItem("currentCityweather") );
+//         console.log(currentCityweather);
 
-        localStorage.setItem("weather", JSON.stringify( currentCityweather ) );
+//   }
 
-        document.getElementById("city").innerHTML = JSON.parse( localStorage.getItem("currentCityweather") );
-        console.log(currentCityweather);
-
-  }
-
-  function setCity(){
-     if (currentCityweather !== null) {
+//   function setCity(){
+//      if (currentCityweather !== null) {
   
-    document.getElementById("recentlocation").innerHTML = currentCityweather;
-    queryURL = "https://api.openweathermap.org/data/2.5/forecast?q=" + currentCityweather + "&appid=" + APIKey;
-     }
+//     document.getElementById("recentlocation").innerHTML = currentCityweather;
+//     queryURL = "https://api.openweathermap.org/data/2.5/forecast?q=" + currentCityweather + "&appid=" + APIKey;
+//      }
 
-    $.ajax({
-        url: queryURL,
-        method: "GET"
-      }).then(function(response) {
-       console.log(response.list);
-     });
-   
-    }
-
-  
-//   
-
-  // }
-//       localStorage.setItem("storageOfCities", JSON.stringify(storageOfCities));
-//       console.log("Thia si the storage:" + storageOfCities);
-
-// // function renderCities() {
-//   // Use JSON.parse() to convert text to JavaScript object
-//   var lastCity = JSON.stringify(localStorage.getItem("storageOfCities"));
-//   // Check if data is returned, if not exit out of the function
-//   console.log("after the storage" + this);
-//   console.log("This is the last city" + lastCity)
-
-// //  console.log(lastCity);
-//   if (lastCity !== null) {
-//   $("#recentlocation").text = lastCity.city1;
-//   queryURL = "https://api.openweathermap.org/data/2.5/forecast?q=" + lastCity.city + "&appid=" + APIKey;
-
-//   $.ajax({
+//     $.ajax({
 //         url: queryURL,
 //         method: "GET"
 //       }).then(function(response) {
-
-//         // Create CODE HERE to log the resulting object
-//         // for (var i = 0; i < 5; i++){
-//         //   console.log(response.list[i]);
-//         // }
-//         // console.log(response.list[0].weather);
-//         // console.log()
-
-        
-  
-//       });    
-
-//   } else {
-//     alert("You did not enter anything");
-//     return;
-//   }
-
-
-// // renderCities();
-//         });
-      
-
-//     });
+//        console.log(response.list);
+//      });
+   
+//     }
 
     </script>
 

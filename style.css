@@ -2,7 +2,7 @@ h1{
     text-align: center;
 }
 
-form.example input[type=text] {
+.example input[type=text] {
     padding: 10px;
     font-size: 17px;
     border: 1px solid grey;
@@ -11,7 +11,7 @@ form.example input[type=text] {
     background: #f1f1f1;
   }
   
-  form.example button {
+  .example button {
     float: left;
     width: 20%;
     padding: 10px;
@@ -23,11 +23,11 @@ form.example input[type=text] {
     cursor: pointer;
   }
   
-  form.example button:hover {
+  .example button:hover {
     background: #0b7dda;
   }
   
-  form.example::after {
+  .example::after {
     content: "";
     clear: both;
     display: table;
@@ -39,7 +39,14 @@ form.example input[type=text] {
 
   .card-body{
     background-color: rgb(0, 123, 255);
+    color: white;
   }
   #firstcard{
     padding: 2%;
+  }
+  #UVindex {
+   background-color: red;
+   color: white;
+   padding: 1%;
+  
   }
