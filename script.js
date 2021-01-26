@@ -59,13 +59,40 @@ function setCity(currentDate) {
       document.getElementById("speed").innerHTML = response.list[0].wind.speed;
       var currentDate = new Date(response.list[0].dt * 1000);
       console.log("This is the currentdate: " + currentDate);
-      var day = currentDate.getDate();
-      console.log(day);
+      var day0 = currentDate.getDate();
+      console.log(day0);
       var month = currentDate.getMonth() + 1;
       var year = currentDate.getFullYear();
-      document.getElementById("locationName").innerHTML = response.city.name + " " + month + "/" + day + "/" + year;
+      document.getElementById("locationName").innerHTML = response.city.name + " " + month + "/" + day0 + "/" + year;
       $('#weatherimg').attr("src", "https://openweathermap.org/img/wn/" + response.list[0].weather[0].icon + "@2x.png");
-      $('#date-1').html(response.list[1].dt * 1000);
+      
+      // Set the date for each 5 day forecast
+      var day1 = (day0) + 1
+      $('#date-1').html(month + "/" + day1 + "/" + year);
+      var day2 = (day1) + 1
+      $('#date-2').html(month + "/" + day2 + "/" + year);
+      var day3 = (day2) + 1
+      $('#date-3').html(month + "/" + day3 + "/" + year);
+      var day4 = (day3) + 1
+      $('#date-4').html(month + "/" + day4 + "/" + year);
+      var day5 = (day4) + 1
+      $('#date-5').html(month + "/" + day5 + "/" + year);
+
+      //Set the temperate for each 5 day forecast:
+
+      for(var i=1; i <=5; i++){
+        console.log("This is the temp for each day:" + response.list[i].main.temp);
+      }
+      
+        $("#1").html(response.list[1].main.temp)
+        $("#2").html(response.list[2].main.temp)
+        $("#3").html(response.list[3].main.temp)
+        $("#4").html(response.list[4].main.temp)
+        $("#5").html(response.list[5].main.temp)
+        
+      
+
+
       
 
 
@@ -77,8 +104,4 @@ function setCity(currentDate) {
     // there was NO currentCityWeather, do something...
     alert("There is no data");
   }
-}
-function addfiveDay(){
-
-
 }
