@@ -5,8 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Weather Map</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-     -->
      <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="style.css">
@@ -19,14 +17,14 @@
       <div class="row">
         <div class="col-md-3">
 
-          <form class="example" action="/action_page.php" style="margin:auto;max-width:300px">
+          <div class="example" style="margin:auto;max-width:300px">
             <label for="Search">Search for City:</label><br>
-            <input type="text" placeholder="Search" name="search2">
+            <input type="text" placeholder="Search" name="search2" id="city">
             <button type="submit"><i class="fa fa-search"></i></button>
-          </form>
+          </div>
           <br>
           <div class="card" style="width: 18rem;">
-            <div class="card-header">
+            <div class="card-header" id="recentlocation">
               Featured
             </div>
             <ul class="list-group list-group-flush">
@@ -59,7 +57,7 @@
   
               <div class="card-body">
                 <h6 class="card-title" id="date-1">8/16/2021</h6>
-                <img class="card-img-top" src=".../100px200/" alt="Card image cap">
+                <img class="card-img-top" src=" " alt="Card image cap">
                 <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
                 <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
               </div>
@@ -67,7 +65,7 @@
             <div class="card">
               <div class="card-body">
                 <h6 class="card-title" id="date-2" >8/16/2021</h6>
-                <img class="card-img-top" src=".../100px200/" alt="Card image cap">
+                <img class="card-img-top" src=" " alt="Card image cap">
                 <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
                 <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
               </div>
@@ -75,7 +73,7 @@
             <div class="card">
               <div class="card-body">
                 <h6 class="card-title" id="date-3" >8/16/2021</h6>
-                <img class="card-img-top" src=".../100px200/" alt="Card image cap">
+                <img class="card-img-top" src=" " alt="Card image cap">
                 <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
                 <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
               </div>
@@ -83,7 +81,7 @@
             <div class="card">
               <div class="card-body">
                 <h6 class="card-title" id="date-4">8/16/2021</h6>
-                <img class="card-img-top" src=".../100px200/" alt="Card image cap">
+                <img class="card-img-top" src=" " alt="Card image cap">
                 <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
                 <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
               </div>
@@ -91,14 +89,12 @@
             <div class="card">
               <div class="card-body">
                 <h6 class="card-title" id="date-5">8/16/2021</h6>
-                <img class="card-img-top" src=".../100px200/" alt="Card image cap">
+                <img class="card-img-top" src=" " alt="Card image cap">
                 <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
                 <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
               </div>
             </div>
           </div>
-
-
          </div>
 
 
@@ -109,57 +105,117 @@
     <script>
       // This is our API key. Add your own API key between the ""
       var APIKey = "886712791a5989b3234e47cdd0cb5a55";
+      var city = $("#city");
+      // var saveCities = (ev) => { 
+        var storageOfCities = [
+                {
+                  cityone: ""
+                },
+                {
+                  cityone: $("#city").val().trim()
+                },
+                {   
+                  cityone: $("#city").val().trim()
+                },
+                {
+                  cityone: $("#city").val().trim()
+                },
+                {
+                  cityone: $("#city").val().trim()
+                },
+      ];
+
+      var emptyCities = [];
+
+      console.log("ADDED:" + storageOfCities);
+      console.log("added" + JSON.stringify(storageOfCities));
+
+      // localStorage.setItem(scheduleStorageKeyName, JSON.stringify(schedules));
+      //       console.log(scheduleStorageKeyName);
+// };
+
+//       $(document).ready(() => {
+$('button').on("click", function(event) {
+event.preventDefault();
+//get the info from the input and put it into an empty string
+ var cityone = city.val();
+showCurrent(cityone);
+setCity();
+})
+var currentCityweather = [];
+function showCurrent(currentWeather) {
+
+  currentCityweather.push(currentWeather);
+
+        localStorage.setItem("weather", JSON.stringify( currentCityweather ) );
+
+        document.getElementById("city").innerHTML = JSON.parse( localStorage.getItem("currentCityweather") );
+        console.log(currentCityweather);
+
+  }
+
+  function setCity(){
+     if (currentCityweather !== null) {
   
-      // Here we are building the URL we need to query the database
-      // var queryURL = "https://api.openweathermap.org/data/2.5/weather?q=Bujumbura,Burundi&appid=" + APIKey;
+    document.getElementById("recentlocation").innerHTML = currentCityweather;
+    queryURL = "https://api.openweathermap.org/data/2.5/forecast?q=" + currentCityweather + "&appid=" + APIKey;
+     }
 
-      // var queryURL =  api.openweathermap.org/data/2.5/weather?q={city name}&appid={API key}
-      var locationURL = "chicago";
-      var queryURL = "https://api.openweathermap.org/data/2.5/forecast?q=" + locationURL + "&appid=" + APIKey;
-    
-      // We then created an AJAX call
-      
-      
-    function addSearchlocation(locationURL){
-     
-      //local storage to get the data from the button
-      // location = "chicago"; 
-
-      locationURL = "chicago";
-      queryURL = "https://api.openweathermap.org/data/2.5/forecast?q=" + locationURL + "&appid=" + APIKey;
-    
-      $.ajax({
+    $.ajax({
         url: queryURL,
         method: "GET"
       }).then(function(response) {
+       console.log(response.list);
+     });
+   
+    }
 
-        // Create CODE HERE to log the resulting object
-        for (var i = 0; i < 5; i++){
-          console.log(response.list[i]);
-        }
-        console.log(response.list[0].weather);
-        console.log()
+  
+//   
 
-        // Create CODE HERE to calculate the temperature (converted from Kelvin)
-        // console.log(response.main.temp);
-        //295.16
+  // }
+//       localStorage.setItem("storageOfCities", JSON.stringify(storageOfCities));
+//       console.log("Thia si the storage:" + storageOfCities);
+
+// // function renderCities() {
+//   // Use JSON.parse() to convert text to JavaScript object
+//   var lastCity = JSON.stringify(localStorage.getItem("storageOfCities"));
+//   // Check if data is returned, if not exit out of the function
+//   console.log("after the storage" + this);
+//   console.log("This is the last city" + lastCity)
+
+// //  console.log(lastCity);
+//   if (lastCity !== null) {
+//   $("#recentlocation").text = lastCity.city1;
+//   queryURL = "https://api.openweathermap.org/data/2.5/forecast?q=" + lastCity.city + "&appid=" + APIKey;
+
+//   $.ajax({
+//         url: queryURL,
+//         method: "GET"
+//       }).then(function(response) {
+
+//         // Create CODE HERE to log the resulting object
+//         // for (var i = 0; i < 5; i++){
+//         //   console.log(response.list[i]);
+//         // }
+//         // console.log(response.list[0].weather);
+//         // console.log()
+
         
   
-        // Create CODE HERE to transfer content to HTML
-        // Hint: To convert from Kelvin to Fahrenheit: F = (K - 273.15) * 1.80 + 32
-        // Create CODE HERE to dump the temperature content into HTML
-  
-      });
+//       });    
 
-      $("button").on("click", function(){
-  alert("The paragraph was clicked.");
-});
-
-}
-addSearchlocation("austin");
+//   } else {
+//     alert("You did not enter anything");
+//     return;
+//   }
 
 
+// // renderCities();
+//         });
       
+
+//     });
 
     </script>
 
