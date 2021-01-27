@@ -32,7 +32,7 @@ function showCurrent(currentWeather) {
     a.text(currentCityweather[i]);
 
   }
-  $("#buttons-view").append(a);
+  $("#buttons-view").prepend(a);
 
 }
 
@@ -45,7 +45,7 @@ function setCity(currentDate) {
       url: queryURL,
       method: "GET"
     }).then(function (response) {
-      // console.log(response);
+      console.log(response);
       // console.log("this is the city name: " + response.city.name);
       document.getElementById("recentlocation").innerHTML = response.city.name;
       // document.getElementById("locationName").innerHTML = response.city.name;
@@ -54,9 +54,9 @@ function setCity(currentDate) {
       document.getElementById("temperature").innerHTML = response.list[0].main.temp;
 
       //display the humidity
-      document.querySelectorAll("Humidity").innerHTML = response.list[0].main.humidity;
+      $("#Humidity").text(response.list[0].main.humidity);
       //display the wind speed
-      document.getElementById("speed").innerHTML = response.list[0].wind.speed;
+      $("#speed").text(response.list[0].wind.speed);
       var currentDate = new Date(response.list[0].dt * 1000);
       console.log("This is the currentdate: " + currentDate);
       var day0 = currentDate.getDate();
@@ -79,24 +79,30 @@ function setCity(currentDate) {
       $('#date-5').html(month + "/" + day5 + "/" + year);
 
       //Set the temperate for each 5 day forecast:
-
-      for(var i=1; i <=5; i++){
-        console.log("This is the temp for each day:" + response.list[i].main.temp);
-      }
       
         $("#1").html(response.list[1].main.temp)
         $("#2").html(response.list[2].main.temp)
         $("#3").html(response.list[3].main.temp)
         $("#4").html(response.list[4].main.temp)
         $("#5").html(response.list[5].main.temp)
-        
-      
 
+  for(var i = 1; i <=5; i++)
+  {
+    // $($(".white")[i]).html(response.list[i].main.humidity);
+     console.log(response.list[i].main.humidity);
+  }
 
-      
-
-
-
+  $(".white-1").html(response.list[1].main.humidity);
+  $(".white-2").html(response.list[2].main.humidity);
+  $(".white-3").html(response.list[3].main.humidity);
+  $(".white-4").html(response.list[4].main.humidity);
+  $(".white-5").html(response.list[5].main.humidity);
+// iterate through the fist to the last image:
+$("#img1").attr("src", "https://openweathermap.org/img/wn/" + response.list[1].weather[0].icon + "@2x.png");
+$("#img2").attr("src", "https://openweathermap.org/img/wn/" + response.list[2].weather[0].icon + "@2x.png");
+$("#img3").attr("src", "https://openweathermap.org/img/wn/" + response.list[3].weather[0].icon + "@2x.png");
+$("#img4").attr("src", "https://openweathermap.org/img/wn/" + response.list[4].weather[0].icon + "@2x.png");
+$("#img5").attr("src", "https://openweathermap.org/img/wn/" + response.list[5].weather[0].icon + "@2x.png");
 
     });
   }
@@ -105,3 +111,19 @@ function setCity(currentDate) {
     alert("There is no data");
   }
 }
+
+// function getUVindex(){
+
+  // var queryURL2 = "http://api.openweathermap.org/data/2.5/uvi?lat=" + lat + "&lon=" + lon + "&appid=" + APIkey;
+
+  //   $.ajax({
+  //     url: queryURL2,
+  //     method: "GET"
+  //   }).then(function (response) {
+  //     console.log(response);
+
+// }
+
+// http://api.openweathermap.org/data/2.5/uvi?lat={lat}&lon={lon}&appid={API key}
+
+// api.openweathermap.org/data/2.5/uvi?lat=37.75&lon=-122.37
