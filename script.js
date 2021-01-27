@@ -3,9 +3,9 @@ var APIKey = "886712791a5989b3234e47cdd0cb5a55";
 var city = $("#city");
 var currentCityweather = [];
 
-
 //       $(document).ready(() => {
 $('button').on("click", function (event) {
+  $("<img>").hide();
   event.preventDefault();
   //get the info from the input and put it into an empty string
   var cityone = city.val();
@@ -21,6 +21,8 @@ function showCurrent(currentWeather) {
 
   document.getElementById("city").innerHTML = JSON.parse(localStorage.getItem("currentCityweather"));
   console.log(currentCityweather);
+
+
 
   $('#button-views').empty();
 
@@ -103,6 +105,25 @@ $("#img2").attr("src", "https://openweathermap.org/img/wn/" + response.list[2].w
 $("#img3").attr("src", "https://openweathermap.org/img/wn/" + response.list[3].weather[0].icon + "@2x.png");
 $("#img4").attr("src", "https://openweathermap.org/img/wn/" + response.list[4].weather[0].icon + "@2x.png");
 $("#img5").attr("src", "https://openweathermap.org/img/wn/" + response.list[5].weather[0].icon + "@2x.png");
+
+//set the UVindex here:
+var lat = response.city.coord.lat;
+console.log("this is the last:" + lat);
+var lon = response.city.coord.lon;
+console.log("this is the last:" + lon);
+var UVvalue = "http://api.openweathermap.org/data/2.5/uvi?lat=" + lat + "&lon=" + lon + "&appid=" + APIKey;
+console.log("This is the uv value: " + UVvalue);
+
+
+ var queryURL2 = "http://api.openweathermap.org/data/2.5/uvi?lat=" + lat + "&lon=" + lon + "&appid=" + APIKey;
+ $.ajax({
+   url: queryURL2,
+   method: "GET"
+ }).then(function(response) {
+   console.log("This is the uv-index: " + response.value);
+   $("#UVindex").html(response.value);
+ });
+
 
     });
   }

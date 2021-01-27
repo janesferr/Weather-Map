@@ -55,8 +55,7 @@ h1{
   }
   img{
     width: 20%;
-    float: right;
-    vertical-align: middle;
+    float: left;
   }
   /* 1.25rem; */
   #locationName{
