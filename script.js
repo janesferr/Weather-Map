@@ -144,11 +144,11 @@ function displayCityWeather(cityName) {
     console.log("this is the last:" + lat);
     var lon = response.city.coord.lon;
     console.log("this is the last:" + lon);
-    var UVvalue = "http://api.openweathermap.org/data/2.5/uvi?lat=" + lat + "&lon=" + lon + "&appid=" + APIKey;
+    var UVvalue = "https://api.openweathermap.org/data/2.5/uvi?lat=" + lat + "&lon=" + lon + "&appid=" + APIKey;
     console.log("This is the uv value: " + UVvalue);
 
 
-    var queryURL2 = "http://api.openweathermap.org/data/2.5/uvi?lat=" + lat + "&lon=" + lon + "&appid=" + APIKey;
+    var queryURL2 = "https://api.openweathermap.org/data/2.5/uvi?lat=" + lat + "&lon=" + lon + "&appid=" + APIKey;
     $.ajax({
       url: queryURL2,
       method: "GET"
